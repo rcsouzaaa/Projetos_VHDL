@@ -1,0 +1,16 @@
+
+State Machine - |Caso1|pr_state
+Name pr_state.ReturnHome pr_state.WriteData4 pr_state.WriteData3 pr_state.WriteData2 pr_state.WriteData1 pr_state.SetAddress pr_state.EntryMode pr_state.DisplayControl pr_state.ClearDisplay pr_state.FunctionSet4 pr_state.FunctionSet3 pr_state.FunctionSet2 pr_state.FunctionSet1 
+pr_state.FunctionSet1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+pr_state.FunctionSet2 0 0 0 0 0 0 0 0 0 0 0 1 1 
+pr_state.FunctionSet3 0 0 0 0 0 0 0 0 0 0 1 0 1 
+pr_state.FunctionSet4 0 0 0 0 0 0 0 0 0 1 0 0 1 
+pr_state.ClearDisplay 0 0 0 0 0 0 0 0 1 0 0 0 1 
+pr_state.DisplayControl 0 0 0 0 0 0 0 1 0 0 0 0 1 
+pr_state.EntryMode 0 0 0 0 0 0 1 0 0 0 0 0 1 
+pr_state.SetAddress 0 0 0 0 0 1 0 0 0 0 0 0 1 
+pr_state.WriteData1 0 0 0 0 1 0 0 0 0 0 0 0 1 
+pr_state.WriteData2 0 0 0 1 0 0 0 0 0 0 0 0 1 
+pr_state.WriteData3 0 0 1 0 0 0 0 0 0 0 0 0 1 
+pr_state.WriteData4 0 1 0 0 0 0 0 0 0 0 0 0 1 
+pr_state.ReturnHome 1 0 0 0 0 0 0 0 0 0 0 0 1 
