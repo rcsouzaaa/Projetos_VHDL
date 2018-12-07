@@ -1,0 +1,864 @@
+TimeQuest Timing Analyzer report for PRJ_2
+Thu Dec 06 17:25:18 2018
+Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow 1200mV 85C Model Fmax Summary
+  6. Slow 1200mV 85C Model Setup Summary
+  7. Slow 1200mV 85C Model Hold Summary
+  8. Slow 1200mV 85C Model Recovery Summary
+  9. Slow 1200mV 85C Model Removal Summary
+ 10. Slow 1200mV 85C Model Minimum Pulse Width Summary
+ 11. Setup Times
+ 12. Hold Times
+ 13. Clock to Output Times
+ 14. Minimum Clock to Output Times
+ 15. Slow 1200mV 0C Model Fmax Summary
+ 16. Slow 1200mV 0C Model Setup Summary
+ 17. Slow 1200mV 0C Model Hold Summary
+ 18. Slow 1200mV 0C Model Recovery Summary
+ 19. Slow 1200mV 0C Model Removal Summary
+ 20. Slow 1200mV 0C Model Minimum Pulse Width Summary
+ 21. Setup Times
+ 22. Hold Times
+ 23. Clock to Output Times
+ 24. Minimum Clock to Output Times
+ 25. Fast 1200mV 0C Model Setup Summary
+ 26. Fast 1200mV 0C Model Hold Summary
+ 27. Fast 1200mV 0C Model Recovery Summary
+ 28. Fast 1200mV 0C Model Removal Summary
+ 29. Fast 1200mV 0C Model Minimum Pulse Width Summary
+ 30. Setup Times
+ 31. Hold Times
+ 32. Clock to Output Times
+ 33. Minimum Clock to Output Times
+ 34. Multicorner Timing Analysis Summary
+ 35. Setup Times
+ 36. Hold Times
+ 37. Clock to Output Times
+ 38. Minimum Clock to Output Times
+ 39. Board Trace Model Assignments
+ 40. Input Transition Times
+ 41. Signal Integrity Metrics (Slow 1200mv 0c Model)
+ 42. Signal Integrity Metrics (Slow 1200mv 85c Model)
+ 43. Signal Integrity Metrics (Fast 1200mv 0c Model)
+ 44. Setup Transfers
+ 45. Hold Transfers
+ 46. Report TCCS
+ 47. Report RSKM
+ 48. Unconstrained Paths
+ 49. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                       ;
++--------------------+----------------------------------------------------+
+; Quartus II Version ; Version 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
+; Revision Name      ; PRJ_2                                              ;
+; Device Family      ; MAX 10                                             ;
+; Device Name        ; 10M50DAF484C7G                                     ;
+; Timing Models      ; Preliminary                                        ;
+; Delay Model        ; Combined                                           ;
+; Rise/Fall Delays   ; Enabled                                            ;
++--------------------+----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ; < 0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                   ;
++---------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------+
+; Clock Name          ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                 ;
++---------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------+
+; E                   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { E }                   ;
+; MAX10_CLK1_50       ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { MAX10_CLK1_50 }       ;
+; pr_state.WriteData4 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { pr_state.WriteData4 } ;
++---------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------+
+
+
++-----------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary                  ;
++------------+-----------------+---------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name    ; Note ;
++------------+-----------------+---------------+------+
+; 125.13 MHz ; 125.13 MHz      ; MAX10_CLK1_50 ;      ;
+; 497.02 MHz ; 497.02 MHz      ; E             ;      ;
++------------+-----------------+---------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++----------------------------------------------+
+; Slow 1200mV 85C Model Setup Summary          ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; pr_state.WriteData4 ; -7.264 ; -36.090       ;
+; MAX10_CLK1_50       ; -6.992 ; -325.331      ;
+; E                   ; -1.012 ; -7.876        ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Slow 1200mV 85C Model Hold Summary          ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; pr_state.WriteData4 ; 0.158 ; 0.000         ;
+; E                   ; 0.225 ; 0.000         ;
+; MAX10_CLK1_50       ; 0.374 ; 0.000         ;
++---------------------+-------+---------------+
+
+
+------------------------------------------
+; Slow 1200mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1200mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
++---------------------+--------+--------------------+
+; Clock               ; Slack  ; End Point TNS      ;
++---------------------+--------+--------------------+
+; MAX10_CLK1_50       ; -3.000 ; -86.000            ;
+; E                   ; -1.000 ; -27.000            ;
+; pr_state.WriteData4 ; 0.450  ; 0.000              ;
++---------------------+--------+--------------------+
+
+
++--------------------------------------------------------------------------+
+; Setup Times                                                              ;
++-----------+---------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+---------------+-------+-------+------------+-----------------+
+; SW[*]     ; E             ; 4.540 ; 4.817 ; Rise       ; E               ;
+;  SW[0]    ; E             ; 4.540 ; 4.817 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; 4.878 ; 5.079 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; 4.776 ; 5.042 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; 4.878 ; 5.079 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------+
+; Hold Times                                                                 ;
++-----------+---------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+---------------+--------+--------+------------+-----------------+
+; SW[*]     ; E             ; -0.477 ; -0.775 ; Rise       ; E               ;
+;  SW[0]    ; E             ; -0.477 ; -0.775 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; -1.608 ; -1.833 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; -1.608 ; -1.833 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; -1.786 ; -2.017 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                     ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise   ; Fall   ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 11.549 ; 11.569 ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 5.154  ;        ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 11.549 ; 11.569 ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;        ; 5.156  ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;        ; 5.156  ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 11.057 ; 11.060 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 10.356 ; 10.302 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 10.280 ; 10.195 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 10.261 ; 10.220 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 10.690 ; 10.704 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 10.606 ; 10.491 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 10.633 ; 10.540 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 11.057 ; 11.060 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 10.281 ; 10.172 ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+--------+--------+------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                             ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise   ; Fall   ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 4.930  ; 9.807  ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 4.930  ;        ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 9.817  ; 9.807  ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;        ; 4.930  ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;        ; 4.930  ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 9.833  ; 9.745  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 9.925  ; 9.871  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 9.851  ; 9.767  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 9.833  ; 9.791  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 10.244 ; 10.255 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 10.164 ; 10.051 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 10.186 ; 10.094 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 10.595 ; 10.596 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 9.852  ; 9.745  ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+--------+--------+------------+---------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                                                             ;
++------------+-----------------+---------------+------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name    ; Note                                           ;
++------------+-----------------+---------------+------------------------------------------------+
+; 137.27 MHz ; 137.27 MHz      ; MAX10_CLK1_50 ;                                                ;
+; 530.5 MHz  ; 500.0 MHz       ; E             ; limit due to minimum period restriction (tmin) ;
++------------+-----------------+---------------+------------------------------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++----------------------------------------------+
+; Slow 1200mV 0C Model Setup Summary           ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; pr_state.WriteData4 ; -6.493 ; -31.958       ;
+; MAX10_CLK1_50       ; -6.285 ; -288.806      ;
+; E                   ; -0.885 ; -5.304        ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Slow 1200mV 0C Model Hold Summary           ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; pr_state.WriteData4 ; 0.137 ; 0.000         ;
+; E                   ; 0.218 ; 0.000         ;
+; MAX10_CLK1_50       ; 0.337 ; 0.000         ;
++---------------------+-------+---------------+
+
+
+-----------------------------------------
+; Slow 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
++---------------------+--------+-------------------+
+; Clock               ; Slack  ; End Point TNS     ;
++---------------------+--------+-------------------+
+; MAX10_CLK1_50       ; -3.000 ; -86.000           ;
+; E                   ; -1.000 ; -27.000           ;
+; pr_state.WriteData4 ; 0.401  ; 0.000             ;
++---------------------+--------+-------------------+
+
+
++--------------------------------------------------------------------------+
+; Setup Times                                                              ;
++-----------+---------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+---------------+-------+-------+------------+-----------------+
+; SW[*]     ; E             ; 4.150 ; 4.354 ; Rise       ; E               ;
+;  SW[0]    ; E             ; 4.150 ; 4.354 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; 4.534 ; 4.649 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; 4.446 ; 4.573 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; 4.534 ; 4.649 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------+
+; Hold Times                                                                 ;
++-----------+---------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+---------------+--------+--------+------------+-----------------+
+; SW[*]     ; E             ; -0.460 ; -0.660 ; Rise       ; E               ;
+;  SW[0]    ; E             ; -0.460 ; -0.660 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; -1.547 ; -1.636 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; -1.547 ; -1.636 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; -1.670 ; -1.837 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                     ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise   ; Fall   ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 10.488 ; 10.663 ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 4.763  ;        ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 10.488 ; 10.663 ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;        ; 4.623  ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;        ; 4.623  ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 10.196 ; 10.063 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 9.561  ; 9.360  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 9.498  ; 9.266  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 9.448  ; 9.305  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 9.862  ; 9.743  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 9.774  ; 9.557  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 9.802  ; 9.592  ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 10.196 ; 10.063 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 9.479  ; 9.250  ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+--------+--------+------------+---------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                           ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise  ; Fall  ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 4.546 ; 9.010 ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 4.546 ;       ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 8.906 ; 9.010 ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;       ; 4.408 ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;       ; 4.408 ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 9.044 ; 8.850 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 9.152 ; 8.956 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 9.092 ; 8.866 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 9.044 ; 8.904 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 9.442 ; 9.324 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 9.356 ; 9.145 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 9.380 ; 9.176 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 9.761 ; 9.631 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 9.073 ; 8.850 ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+-------+-------+------------+---------------------+
+
+
++----------------------------------------------+
+; Fast 1200mV 0C Model Setup Summary           ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; pr_state.WriteData4 ; -2.284 ; -9.933        ;
+; MAX10_CLK1_50       ; -2.281 ; -86.382       ;
+; E                   ; 0.060  ; 0.000         ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Fast 1200mV 0C Model Hold Summary           ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; pr_state.WriteData4 ; 0.046 ; 0.000         ;
+; E                   ; 0.047 ; 0.000         ;
+; MAX10_CLK1_50       ; 0.141 ; 0.000         ;
++---------------------+-------+---------------+
+
+
+-----------------------------------------
+; Fast 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
++---------------------+--------+-------------------+
+; Clock               ; Slack  ; End Point TNS     ;
++---------------------+--------+-------------------+
+; MAX10_CLK1_50       ; -3.000 ; -101.168          ;
+; E                   ; -1.000 ; -27.000           ;
+; pr_state.WriteData4 ; 0.280  ; 0.000             ;
++---------------------+--------+-------------------+
+
+
++--------------------------------------------------------------------------+
+; Setup Times                                                              ;
++-----------+---------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+---------------+-------+-------+------------+-----------------+
+; SW[*]     ; E             ; 1.967 ; 2.573 ; Rise       ; E               ;
+;  SW[0]    ; E             ; 1.967 ; 2.573 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; 1.976 ; 2.598 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; 1.837 ; 2.530 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; 1.976 ; 2.598 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------+
+; Hold Times                                                                 ;
++-----------+---------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+---------------+--------+--------+------------+-----------------+
+; SW[*]     ; E             ; -0.030 ; -0.682 ; Rise       ; E               ;
+;  SW[0]    ; E             ; -0.030 ; -0.682 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; -0.530 ; -1.189 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; -0.530 ; -1.189 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; -0.663 ; -1.262 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                   ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise  ; Fall  ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 5.422 ; 5.262 ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 2.421 ;       ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 5.422 ; 5.262 ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;       ; 2.579 ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;       ; 2.579 ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 5.125 ; 5.327 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 4.762 ; 4.900 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 4.730 ; 4.856 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 4.744 ; 4.881 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 4.957 ; 5.130 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 4.886 ; 5.014 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 4.867 ; 4.999 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 5.125 ; 5.327 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 4.718 ; 4.836 ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+-------+-------+------------+---------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                           ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise  ; Fall  ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 2.339 ; 4.543 ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 2.339 ;       ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 4.670 ; 4.543 ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;       ; 2.491 ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;       ; 2.491 ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 4.542 ; 4.655 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 4.585 ; 4.717 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 4.554 ; 4.675 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 4.568 ; 4.700 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 4.773 ; 4.939 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 4.704 ; 4.828 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 4.683 ; 4.809 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 4.933 ; 5.128 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 4.542 ; 4.655 ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+-------+-------+------------+---------------------+
+
+
++------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                ;
++----------------------+----------+-------+----------+---------+---------------------+
+; Clock                ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++----------------------+----------+-------+----------+---------+---------------------+
+; Worst-case Slack     ; -7.264   ; 0.046 ; N/A      ; N/A     ; -3.000              ;
+;  E                   ; -1.012   ; 0.047 ; N/A      ; N/A     ; -1.000              ;
+;  MAX10_CLK1_50       ; -6.992   ; 0.141 ; N/A      ; N/A     ; -3.000              ;
+;  pr_state.WriteData4 ; -7.264   ; 0.046 ; N/A      ; N/A     ; 0.280               ;
+; Design-wide TNS      ; -369.297 ; 0.0   ; 0.0      ; 0.0     ; -128.168            ;
+;  E                   ; -7.876   ; 0.000 ; N/A      ; N/A     ; -27.000             ;
+;  MAX10_CLK1_50       ; -325.331 ; 0.000 ; N/A      ; N/A     ; -101.168            ;
+;  pr_state.WriteData4 ; -36.090  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++----------------------+----------+-------+----------+---------+---------------------+
+
+
++--------------------------------------------------------------------------+
+; Setup Times                                                              ;
++-----------+---------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+---------------+-------+-------+------------+-----------------+
+; SW[*]     ; E             ; 4.540 ; 4.817 ; Rise       ; E               ;
+;  SW[0]    ; E             ; 4.540 ; 4.817 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; 4.878 ; 5.079 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; 4.776 ; 5.042 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; 4.878 ; 5.079 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------+
+; Hold Times                                                                 ;
++-----------+---------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port    ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+---------------+--------+--------+------------+-----------------+
+; SW[*]     ; E             ; -0.030 ; -0.660 ; Rise       ; E               ;
+;  SW[0]    ; E             ; -0.030 ; -0.660 ; Rise       ; E               ;
+; KEY[*]    ; MAX10_CLK1_50 ; -0.530 ; -1.189 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[0]   ; MAX10_CLK1_50 ; -0.530 ; -1.189 ; Rise       ; MAX10_CLK1_50   ;
+;  KEY[1]   ; MAX10_CLK1_50 ; -0.663 ; -1.262 ; Rise       ; MAX10_CLK1_50   ;
++-----------+---------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Clock to Output Times                                                                     ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise   ; Fall   ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+--------+--------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 11.549 ; 11.569 ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 5.154  ;        ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 11.549 ; 11.569 ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;        ; 5.156  ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;        ; 5.156  ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 11.057 ; 11.060 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 10.356 ; 10.302 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 10.280 ; 10.195 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 10.261 ; 10.220 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 10.690 ; 10.704 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 10.606 ; 10.491 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 10.633 ; 10.540 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 11.057 ; 11.060 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 10.281 ; 10.172 ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+--------+--------+------------+---------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                           ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; Data Port      ; Clock Port          ; Rise  ; Fall  ; Clock Edge ; Clock Reference     ;
++----------------+---------------------+-------+-------+------------+---------------------+
+; ARDUINO_IO[*]  ; E                   ; 2.339 ; 4.543 ; Rise       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ; 2.339 ;       ; Rise       ; E                   ;
+;  ARDUINO_IO[9] ; E                   ; 4.670 ; 4.543 ; Rise       ; E                   ;
+; ARDUINO_IO[*]  ; E                   ;       ; 2.491 ; Fall       ; E                   ;
+;  ARDUINO_IO[8] ; E                   ;       ; 2.491 ; Fall       ; E                   ;
+; ARDUINO_IO[*]  ; pr_state.WriteData4 ; 4.542 ; 4.655 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[0] ; pr_state.WriteData4 ; 4.585 ; 4.717 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[1] ; pr_state.WriteData4 ; 4.554 ; 4.675 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[2] ; pr_state.WriteData4 ; 4.568 ; 4.700 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[3] ; pr_state.WriteData4 ; 4.773 ; 4.939 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[4] ; pr_state.WriteData4 ; 4.704 ; 4.828 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[5] ; pr_state.WriteData4 ; 4.683 ; 4.809 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[6] ; pr_state.WriteData4 ; 4.933 ; 5.128 ; Rise       ; pr_state.WriteData4 ;
+;  ARDUINO_IO[7] ; pr_state.WriteData4 ; 4.542 ; 4.655 ; Rise       ; pr_state.WriteData4 ;
++----------------+---------------------+-------+-------+------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                     ;
++----------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin            ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++----------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; ARDUINO_IO[0]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[1]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[2]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[3]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[4]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[5]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[6]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[7]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[8]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[9]  ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[10] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[11] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[12] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[13] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[14] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ARDUINO_IO[15] ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_TDO~   ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++----------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++---------------------------------------------------------------------------------+
+; Input Transition Times                                                          ;
++---------------------+-----------------------+-----------------+-----------------+
+; Pin                 ; I/O Standard          ; 10-90 Rise Time ; 90-10 Fall Time ;
++---------------------+-----------------------+-----------------+-----------------+
+; SW[1]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[2]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[3]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[4]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[5]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[6]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[7]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[8]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[9]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; MAX10_CLK1_50       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[0]               ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; KEY[0]              ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
+; KEY[1]              ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
+; ~ALTERA_TMS~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TCK~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_TDI~        ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_CONFIG_SEL~ ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_nCONFIG~    ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_nSTATUS~    ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_CONF_DONE~  ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
++---------------------+-----------------------+-----------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin            ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; ARDUINO_IO[0]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[1]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[2]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[3]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[4]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[5]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[6]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[7]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[8]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[9]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[10] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[11] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[12] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[13] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[14] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[15] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.83e-08 V                   ; 3.17 V              ; -0.098 V            ; 0.204 V                              ; 0.4 V                                ; 6.43e-10 s                  ; 6.82e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.83e-08 V                  ; 3.17 V             ; -0.098 V           ; 0.204 V                             ; 0.4 V                               ; 6.43e-10 s                 ; 6.82e-10 s                 ; No                        ; No                        ;
+; ~ALTERA_TDO~   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.69e-08 V                   ; 2.37 V              ; -0.0453 V           ; 0.185 V                              ; 0.166 V                              ; 6.63e-10 s                  ; 8.19e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 1.69e-08 V                  ; 2.37 V             ; -0.0453 V          ; 0.185 V                             ; 0.166 V                             ; 6.63e-10 s                 ; 8.19e-10 s                 ; No                        ; No                        ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin            ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; ARDUINO_IO[0]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[1]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[2]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[3]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[4]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[5]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[6]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[7]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[8]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[9]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[10] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[11] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[12] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[13] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[14] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ARDUINO_IO[15] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 4.5e-06 V                    ; 3.14 V              ; -0.0591 V           ; 0.285 V                              ; 0.302 V                              ; 6.82e-10 s                  ; 8.59e-10 s                  ; No                         ; No                         ; 3.08 V                      ; 4.5e-06 V                   ; 3.14 V             ; -0.0591 V          ; 0.285 V                             ; 0.302 V                             ; 6.82e-10 s                 ; 8.59e-10 s                 ; No                        ; No                        ;
+; ~ALTERA_TDO~   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.47e-06 V                   ; 2.35 V              ; -0.021 V            ; 0.153 V                              ; 0.139 V                              ; 8.47e-10 s                  ; 9.84e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 2.47e-06 V                  ; 2.35 V             ; -0.021 V           ; 0.153 V                             ; 0.139 V                             ; 8.47e-10 s                 ; 9.84e-10 s                 ; No                        ; No                        ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin            ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; ARDUINO_IO[0]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[1]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[2]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[3]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[4]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[5]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[6]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[7]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[8]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[9]  ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[10] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[11] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[12] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[13] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[14] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ARDUINO_IO[15] ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.46 V                       ; 5.93e-07 V                   ; 3.61 V              ; -0.0333 V           ; 0.268 V                              ; 0.111 V                              ; 4.52e-10 s                  ; 4.98e-10 s                  ; No                         ; Yes                        ; 3.46 V                      ; 5.93e-07 V                  ; 3.61 V             ; -0.0333 V          ; 0.268 V                             ; 0.111 V                             ; 4.52e-10 s                 ; 4.98e-10 s                 ; No                        ; Yes                       ;
+; ~ALTERA_TDO~   ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 1.94e-07 V                   ; 2.72 V              ; -0.0267 V           ; 0.222 V                              ; 0.078 V                              ; 4.6e-10 s                   ; 5e-10 s                     ; No                         ; Yes                        ; 2.62 V                      ; 1.94e-07 V                  ; 2.72 V             ; -0.0267 V          ; 0.222 V                             ; 0.078 V                             ; 4.6e-10 s                  ; 5e-10 s                    ; No                        ; Yes                       ;
++----------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------+
+; Setup Transfers                                                                       ;
++---------------------+---------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+---------------------+----------+----------+----------+----------+
+; E                   ; E                   ; 26       ; 0        ; 0        ; 0        ;
+; pr_state.WriteData4 ; E                   ; 1        ; 1        ; 0        ; 0        ;
+; E                   ; MAX10_CLK1_50       ; 1        ; 1        ; 0        ; 0        ;
+; MAX10_CLK1_50       ; MAX10_CLK1_50       ; 108940   ; 0        ; 0        ; 0        ;
+; E                   ; pr_state.WriteData4 ; 72       ; 0        ; 0        ; 0        ;
+; MAX10_CLK1_50       ; pr_state.WriteData4 ; 6563     ; 0        ; 0        ; 0        ;
++---------------------+---------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++---------------------------------------------------------------------------------------+
+; Hold Transfers                                                                        ;
++---------------------+---------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+---------------------+----------+----------+----------+----------+
+; E                   ; E                   ; 26       ; 0        ; 0        ; 0        ;
+; pr_state.WriteData4 ; E                   ; 1        ; 1        ; 0        ; 0        ;
+; E                   ; MAX10_CLK1_50       ; 1        ; 1        ; 0        ; 0        ;
+; MAX10_CLK1_50       ; MAX10_CLK1_50       ; 108940   ; 0        ; 0        ; 0        ;
+; E                   ; pr_state.WriteData4 ; 72       ; 0        ; 0        ; 0        ;
+; MAX10_CLK1_50       ; pr_state.WriteData4 ; 6563     ; 0        ; 0        ; 0        ;
++---------------------+---------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 3     ; 3    ;
+; Unconstrained Input Port Paths  ; 55    ; 55   ;
+; Unconstrained Output Ports      ; 10    ; 10   ;
+; Unconstrained Output Port Paths ; 18    ; 18   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
+    Info: Processing started: Thu Dec 06 17:25:03 2018
+Info: Command: quartus_sta PRJ_2 -c PRJ_2
+Info: qsta_default_script.tcl version: #11
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Warning (335093): TimeQuest Timing Analyzer is analyzing 8 combinational loops as latches.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'PRJ_2.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name MAX10_CLK1_50 MAX10_CLK1_50
+    Info (332105): create_clock -period 1.000 -name E E
+    Info (332105): create_clock -period 1.000 -name pr_state.WriteData4 pr_state.WriteData4
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -7.264
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -7.264             -36.090 pr_state.WriteData4 
+    Info (332119):    -6.992            -325.331 MAX10_CLK1_50 
+    Info (332119):    -1.012              -7.876 E 
+Info (332146): Worst-case hold slack is 0.158
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.158               0.000 pr_state.WriteData4 
+    Info (332119):     0.225               0.000 E 
+    Info (332119):     0.374               0.000 MAX10_CLK1_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -86.000 MAX10_CLK1_50 
+    Info (332119):    -1.000             -27.000 E 
+    Info (332119):     0.450               0.000 pr_state.WriteData4 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Warning (334000): Timing characteristics of device 10M50DAF484C7G are preliminary
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -6.493
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -6.493             -31.958 pr_state.WriteData4 
+    Info (332119):    -6.285            -288.806 MAX10_CLK1_50 
+    Info (332119):    -0.885              -5.304 E 
+Info (332146): Worst-case hold slack is 0.137
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.137               0.000 pr_state.WriteData4 
+    Info (332119):     0.218               0.000 E 
+    Info (332119):     0.337               0.000 MAX10_CLK1_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -86.000 MAX10_CLK1_50 
+    Info (332119):    -1.000             -27.000 E 
+    Info (332119):     0.401               0.000 pr_state.WriteData4 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast 1200mV 0C Model
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -2.284
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.284              -9.933 pr_state.WriteData4 
+    Info (332119):    -2.281             -86.382 MAX10_CLK1_50 
+    Info (332119):     0.060               0.000 E 
+Info (332146): Worst-case hold slack is 0.046
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.046               0.000 pr_state.WriteData4 
+    Info (332119):     0.047               0.000 E 
+    Info (332119):     0.141               0.000 MAX10_CLK1_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000            -101.168 MAX10_CLK1_50 
+    Info (332119):    -1.000             -27.000 E 
+    Info (332119):     0.280               0.000 pr_state.WriteData4 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4946 megabytes
+    Info: Processing ended: Thu Dec 06 17:25:18 2018
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:14
+
+

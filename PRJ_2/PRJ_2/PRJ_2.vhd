@@ -9,7 +9,7 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;																								-- para ignorar valores negativos
 
-
+	
 --------------------------------------------------------------------
 ENTITY PRJ_2 IS
 
@@ -24,17 +24,14 @@ PORT 	  (
 			MAX10_CLK1_50:	 IN STD_LOGIC; 																					-- max10clock
 			ARDUINO_IO:		 OUT STD_LOGIC_VECTOR(15 DOWNTO 0); 														-- arduino io(vetor)
 			SW:				 IN STD_LOGIC_VECTOR(9 DOWNTO 0);															-- CHAVES
-			KEY		: IN  STD_LOGIC_VECTOR(1 DOWNTO 0)  																-- 2 botões push-button
+			KEY: 				 IN  STD_LOGIC_VECTOR(1 DOWNTO 0)  															-- 2 botões push-button
 			);	
 			
 END PRJ_2;
 --------------------------------------------------------------------
 ARCHITECTURE PRJ_2 OF PRJ_2 IS
 	TYPE state IS (FunctionSet1, FunctionSet2, FunctionSet3,															-- declaracao de funcoes
-	FunctionSet4, FunctionSet5, FunctionSet6, FunctionSet7,FunctionSet8,
-	FunctionSet9, FunctionSet10, FunctionSet11, FunctionSet12, 
-	FunctionSet13, FunctionSet14, FunctionSet15, FunctionSet16, FunctionSet17, 
-	FunctionSet18, ClearDisplay, DisplayControl, EntryMode, 
+	FunctionSet4, ClearDisplay, DisplayControl, EntryMode, 
 	SetAddress,WriteData1, WriteData2, WriteData3, WriteData4,WriteData5, WriteData6,						-- white data eh cada estado da maquina
 	WriteData7, WriteData8, WriteData9, WriteData10, WriteData11, WriteData12, WriteData13,
 	WriteData14, WriteData15, WriteData16, WriteData17, WriteData18, ReturnHome);		
@@ -98,7 +95,88 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 		END IF;
 		END IF;
 	END PROCESS;
------ Lower section of FSM: --------------------
+	
+
+	PROCESS(MAX10_CLK1_50, KEY)
+	VARIABLE contCLK: INTEGER RANGE 0 TO maxCont;																	-- divisor para a base de tempo de 1s
+	VARIABLE contB:   INTEGER RANGE 0 TO maxB;																		-- contador para o incremento automatico do botao
+	VARIABLE contSeg: INTEGER RANGE 0 TO maxSeg;     															   -- contador dos segundos
+	VARIABLE contMin: INTEGER RANGE 0 TO maxMin;																		-- contador dos minutos
+	VARIABLE contHor: INTEGER RANGE 0 TO maxHor;																		-- contador das horas
+	
+	BEGIN
+	-----------------------------------------------------------
+	IF(MAX10_CLK1_50'EVENT AND MAX10_CLK1_50 = '1') THEN 														-- sinal de clock de 50MHz do DE10-Lite
+	
+	 -- RISING_EDGE(MAX10_CLK1_50) ou FALLING_EDGE(MAX10_CLK1_50)
+		
+		contCLK := contCLK + 1;																							-- divisor para o clock de 1 s
+		contB := contB + 1;																								-- divisor para 100 ms (leitura do botao)
+		
+		--------------------------------------------------------------
+		--leitura dos botoes KEY(0) - segundos, KEY(1) - minutos e horas
+		--------------------------------------------------------------
+		
+		IF(contB = maxB -1) THEN
+			contB := 0;
+			
+			IF(KEY(0)='0') THEN 																							-- se chave dos segundos, zera segundos
+				contSeg := 0;
+			END IF;
+			
+			IF(KEY(1) ='0') THEN 																						-- se chave dos minutos e horas, incrementa minutos e horas
+				contMin := contMin+1;
+				IF (contMin = maxMin) THEN 
+					contMin := 0;
+					contHor := contHor+1;
+					IF (contHor = maxHor) THEN 
+					contHor := 0;
+					END IF;
+				END IF;
+			END IF;
+		END IF;
+		
+		-----------------------------------------------------------
+		-- Funcionamento do Relógio em relação ao sinal de CLOCK --
+		-----------------------------------------------------------
+		
+		IF(contCLK = maxCont-1) THEN																					-- se contou 1 segundo
+			contCLK := 0;	
+			contSeg := contSeg + 1;
+		-----------------------------------------------------------
+			IF(contSeg = maxSeg) THEN 																					-- se contSeg = 60
+				contSeg := 0;
+				contMin := contMin + 1;
+		-----------------------------------------------------------
+				IF(contMin = maxMin) THEN																				-- se contMin = 60
+					contMin := 0;	
+					contHor := contHor + 1;
+		-----------------------------------------------------------
+					IF (contHor = maxHor) THEN 																		-- se contHor = 24
+						contHor := 0;
+					
+					END IF;
+				END IF;											
+			END IF;
+		END IF;
+	END IF;
+
+	-----------------------------------------------------------
+	-- Conversao para os digitos individuais do tempo
+	-----------------------------------------------------------
+	
+	digSL <= contSeg MOD 10;
+	digSH <= contSeg/10;
+	
+	digML <= contMin MOD 10;
+	digMH <= contMin/10;
+	
+	digHL <= contHor MOD 10;
+	digHH <= contHor/10;
+	
+	END PROCESS;
+	
+	----- Lower section of FSM: --------------------
 	PROCESS (E)
 		BEGIN
 		IF (E'EVENT AND E='1') THEN
@@ -111,86 +189,6 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 	END PROCESS;
 	
 
-		PROCESS(MAX10_CLK1_50, KEY)
-		
-		VARIABLE contCLK: INTEGER RANGE 0 TO maxCont;																	-- divisor para a base de tempo de 1s
-		VARIABLE contB:   INTEGER RANGE 0 TO maxB;																		-- contador para o incremento automatico do botao
-		VARIABLE contSeg: INTEGER RANGE 0 TO maxSeg;     															   -- contador dos segundos
-		VARIABLE contMin: INTEGER RANGE 0 TO maxMin;																		-- contador dos minutos
-		VARIABLE contHor: INTEGER RANGE 0 TO maxHor;																		-- contador das horas
-		
-		BEGIN
-			-----------------------------------------------------------
-			IF(MAX10_CLK1_50'EVENT AND MAX10_CLK1_50 = '1') THEN 														-- sinal de clock de 50MHz do DE10-Lite
-			
-			 -- RISING_EDGE(MAX10_CLK1_50) ou FALLING_EDGE(MAX10_CLK1_50)
-				
-				contCLK := contCLK + 1;																							-- divisor para o clock de 1 s
-				contB := contB + 1;																								-- divisor para 100 ms (leitura do botao)
-				
-				--------------------------------------------------------------
-				--leitura dos botoes KEY(0) - segundos, KEY(1) - minutos e horas
-				--------------------------------------------------------------
-				
-				IF(contB = maxB -1) THEN
-					contB := 0;
-					
-					IF(KEY(0)='0') THEN 																							-- se chave dos segundos, zera segundos
-						contSeg := 0;
-					END IF;
-					
-					IF(KEY(1) ='0') THEN 																						-- se chave dos minutos e horas, incrementa minutos e horas
-						contMin := contMin+1;
-						IF (contMin = maxMin) THEN 
-							contMin := 0;
-							contHor := contHor+1;
-							IF (contHor = maxHor) THEN 
-							contHor := 0;
-							END IF;
-						END IF;
-					END IF;
-				END IF;
-				
-				-----------------------------------------------------------
-				-- Funcionamento do Relógio em relação ao sinal de CLOCK --
-				-----------------------------------------------------------
-				
-				IF(contCLK = maxCont-1) THEN																					-- se contou 1 segundo
-					contCLK := 0;	
-					contSeg := contSeg + 1;
-				-----------------------------------------------------------
-					IF(contSeg = maxSeg) THEN 																					-- se contSeg = 60
-						contSeg := 0;
-						contMin := contMin + 1;
-				-----------------------------------------------------------
-						IF(contMin = maxMin) THEN																				-- se contMin = 60
-							contMin := 0;	
-							contHor := contHor + 1;
-				-----------------------------------------------------------
-							IF (contHor = maxHor) THEN 																		-- se contHor = 24
-								contHor := 0;
-							
-							END IF;
-						END IF;											
-					END IF;
-				END IF;
-			END IF;
-		
-			-----------------------------------------------------------
-			-- Conversao para os digitos individuais do tempo
-			-----------------------------------------------------------
-			
-			digSL <= contSeg MOD 10;
-			digSH <= contSeg/10;
-			
-			digML <= contMin MOD 10;
-			digMH <= contMin/10;
-			
-			digHL <= contHor MOD 10;
-			digHH <= contHor/10;
-			
-		END PROCESS;
-	
 -----------------------------------------------------------------		
 tabelaSL:       
 	BLOCK
@@ -267,61 +265,29 @@ tabelaHH: 		-- so conta até 2
 				  ds2;
 	END BLOCK tabelaHH;	
 -----------------------------------------------------------------
------ Upper section of FSM: --------------------
+
+
+	----- Upper section of FSM: --------------------
 	PROCESS (pr_state)
-		BEGIN
-		CASE pr_state IS
-			WHEN FunctionSet1 =>RS<='0';									
+	BEGIN
+	CASE pr_state IS 
+		
+			WHEN FunctionSet1 =>
+				 RS <='0';									
 				 DB <= "00111000";														
 				 nx_state <= FunctionSet2;											
-			WHEN FunctionSet2 =>RS<='0'; 
+			WHEN FunctionSet2 =>
+				 RS <='0';	 
 				 DB <= "00111000";
 				 nx_state <= FunctionSet3;
-			WHEN FunctionSet3 =>RS<='0'; 
+			WHEN FunctionSet3 =>
+			    RS <='0';	
 				 DB <= "00111000";
 				 nx_state <= FunctionSet4;
-			WHEN FunctionSet4 =>RS<='0'; 
+			WHEN FunctionSet4 =>
+				 RS <='0';	
 				 DB <= "00111000";
-				 nx_state <= FunctionSet5;
-			WHEN FunctionSet5 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet6;
-			WHEN FunctionSet6 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet7;
-			WHEN FunctionSet7 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet8;
-			WHEN FunctionSet8 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet9;
-			WHEN FunctionSet9 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet10;
-			WHEN FunctionSet10 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet11;
-			WHEN FunctionSet11 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet12;
-			WHEN FunctionSet12 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet13;
-			WHEN FunctionSet13 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet14;
-			WHEN FunctionSet15 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet16;
-			WHEN FunctionSet16 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet17;
-			WHEN FunctionSet17 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= FunctionSet18;
-			WHEN FunctionSet18 =>RS<='0'; 
-				 DB <= "00111000";
-				 nx_state <= ClearDisplay;
+				 nx_state <= ClearDisplay;	
 			WHEN ClearDisplay =>RS<='0'; 
 				 DB <= "00000001";
 				 nx_state <= DisplayControl;
@@ -344,7 +310,7 @@ tabelaHH: 		-- so conta até 2
 				 DM <= UM; 																-- Dezena Minutos
 				 nx_state <= WriteData5;
 			WHEN WriteData5 => RS <='1'; 
-				 UM <= DS; 																-- Unidade minutos
+				 UM <= DM; 																-- Unidade minutos
 				 nx_state <= WriteData6;
 			WHEN WriteData6=>RS<='1'; 
 				 DB <= "00111010";  													-- Dois Pontos
@@ -355,6 +321,27 @@ tabelaHH: 		-- so conta até 2
 			WHEN WriteData8=>RS<='1'; 
 				 DB <= US;  															-- Unidade Segundo
 				 nx_state <= SetAddress;
+			WHEN WriteData16=>RS<='1'; 
+				 DB <= dsn;  															-- " "
+				 nx_state <= WriteData17; 
+			WHEN WriteData16=>RS<='1'; 
+				 DB <= dsn;  															-- " "
+				 nx_state <= WriteData17; 
+			WHEN WriteData16=>RS<='1'; 
+				 DB <= dsn;  															-- " "
+				 nx_state <= WriteData17; 
+			WHEN WriteData16=>RS<='1'; 
+				 DB <= dsn;  															-- " "
+				 nx_state <= WriteData17; 
+			WHEN WriteData9=>RS<='1'; 
+				 DB <= ds2;  															-- 2
+				 nx_state <= WriteData10; 
+			WHEN WriteData9=>RS<='1'; 
+				 DB <= ds4;  															-- 4
+				 nx_state <= WriteData10; 
+			WHEN WriteData9=>RS<='1'; 
+				 DB <= "01001000";  													-- H
+				 nx_state <= WriteData10; 
 			WHEN SetAddress => RS <='0';											-- Desce para a linha de baixo
 				 DB <= "11000000";
 				 nx_state <= WriteData9;
@@ -390,8 +377,10 @@ tabelaHH: 		-- so conta até 2
 				 nx_state <= ReturnHome; 
 			WHEN ReturnHome =>RS<='0';
 				 DB <= "10000000";
-				 nx_state <= WriteData1;
-		END CASE;
+				 nx_state <= WriteData1; 
+				 
+	END CASE;
 	END PROCESS;
+	
 END PRJ_2;
 --------------------------------------------------------------------

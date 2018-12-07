@@ -19,14 +19,13 @@
 #
 # Quartus II 64-Bit
 # Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-# Date created = 16:56:57  December 05, 2018
+# Date created = 13:33:45  December 06, 2018
 #
 # -------------------------------------------------------------------------- #
 
 QUARTUS_VERSION = "15.0"
-DATE = "16:56:57  December 05, 2018"
+DATE = "13:33:45  December 06, 2018"
 
 # Revisions
 
 PROJECT_REVISION = "PRJ_2"
-PROJECT_REVISION = "PRJ-2"
