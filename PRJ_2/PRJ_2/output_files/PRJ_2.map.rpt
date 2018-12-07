@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PRJ_2
-Fri Dec 07 13:57:21 2018
+Fri Dec 07 15:24:50 2018
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -14,17 +14,18 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |PRJ_2|pr_state
-  9. User-Specified and Inferred Latches
- 10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Parameter Settings for User Entity Instance: Top-level Entity: |PRJ_2
- 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
- 14. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
- 15. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
- 16. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
- 17. Post-Synthesis Netlist Statistics for Top Partition
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |PRJ_2
+ 12. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 14. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 15. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
+ 16. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2
+ 17. Parameter Settings for Inferred Entity Instance: lpm_divide:Div2
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
 
 
 
@@ -51,13 +52,13 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Dec 07 13:57:20 2018      ;
+; Analysis & Synthesis Status        ; Successful - Fri Dec 07 15:24:50 2018      ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
 ; Revision Name                      ; PRJ_2                                      ;
 ; Top-level Entity Name              ; PRJ_2                                      ;
 ; Family                             ; MAX 10                                     ;
-; Total logic elements               ; 370                                        ;
-;     Total combinational functions  ; 370                                        ;
+; Total logic elements               ; 443                                        ;
+;     Total combinational functions  ; 443                                        ;
 ;     Dedicated logic registers      ; 117                                        ;
 ; Total registers                    ; 117                                        ;
 ; Total pins                         ; 29                                         ;
@@ -207,17 +208,17 @@ agreement for further details.
 +---------------------------------------------+---------------------+
 ; Resource                                    ; Usage               ;
 +---------------------------------------------+---------------------+
-; Estimated Total logic elements              ; 370                 ;
+; Estimated Total logic elements              ; 443                 ;
 ;                                             ;                     ;
-; Total combinational functions               ; 370                 ;
+; Total combinational functions               ; 443                 ;
 ; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 115                 ;
-;     -- 3 input functions                    ; 61                  ;
-;     -- <=2 input functions                  ; 194                 ;
+;     -- 4 input functions                    ; 130                 ;
+;     -- 3 input functions                    ; 76                  ;
+;     -- <=2 input functions                  ; 237                 ;
 ;                                             ;                     ;
 ; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 271                 ;
-;     -- arithmetic mode                      ; 99                  ;
+;     -- normal mode                          ; 316                 ;
+;     -- arithmetic mode                      ; 127                 ;
 ;                                             ;                     ;
 ; Total registers                             ; 117                 ;
 ;     -- Dedicated logic registers            ; 117                 ;
@@ -229,8 +230,8 @@ agreement for further details.
 ;                                             ;                     ;
 ; Maximum fan-out node                        ; MAX10_CLK1_50~input ;
 ; Maximum fan-out                             ; 83                  ;
-; Total fan-out                               ; 1281                ;
-; Average fan-out                             ; 2.35                ;
+; Total fan-out                               ; 1460                ;
+; Average fan-out                             ; 2.36                ;
 +---------------------------------------------+---------------------+
 
 
@@ -239,23 +240,31 @@ agreement for further details.
 +----------------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                    ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------------------------+--------------+
-; |PRJ_2                                 ; 370 (267)         ; 117 (117)    ; 0           ; 0          ; 0            ; 0       ; 0         ; 29   ; 0            ; 0          ; |PRJ_2                                                                                                 ; work         ;
+; |PRJ_2                                 ; 443 (274)         ; 117 (117)    ; 0           ; 0          ; 0            ; 0       ; 0         ; 29   ; 0            ; 0          ; |PRJ_2                                                                                                 ; work         ;
 ;    |lpm_divide:Div0|                   ; 30 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div0                                                                                 ; work         ;
 ;       |lpm_divide_7sl:auto_generated|  ; 30 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div0|lpm_divide_7sl:auto_generated                                                   ; work         ;
 ;          |sign_div_unsign_9kh:divider| ; 30 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div0|lpm_divide_7sl:auto_generated|sign_div_unsign_9kh:divider                       ; work         ;
 ;             |alt_u_div_see:divider|    ; 30 (30)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div0|lpm_divide_7sl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_see:divider ; work         ;
-;    |lpm_divide:Div1|                   ; 17 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1                                                                                 ; work         ;
-;       |lpm_divide_6sl:auto_generated|  ; 17 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1|lpm_divide_6sl:auto_generated                                                   ; work         ;
-;          |sign_div_unsign_8kh:divider| ; 17 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1|lpm_divide_6sl:auto_generated|sign_div_unsign_8kh:divider                       ; work         ;
-;             |alt_u_div_qee:divider|    ; 17 (17)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1|lpm_divide_6sl:auto_generated|sign_div_unsign_8kh:divider|alt_u_div_qee:divider ; work         ;
+;    |lpm_divide:Div1|                   ; 30 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1                                                                                 ; work         ;
+;       |lpm_divide_7sl:auto_generated|  ; 30 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1|lpm_divide_7sl:auto_generated                                                   ; work         ;
+;          |sign_div_unsign_9kh:divider| ; 30 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1|lpm_divide_7sl:auto_generated|sign_div_unsign_9kh:divider                       ; work         ;
+;             |alt_u_div_see:divider|    ; 30 (30)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div1|lpm_divide_7sl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_see:divider ; work         ;
+;    |lpm_divide:Div2|                   ; 17 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div2                                                                                 ; work         ;
+;       |lpm_divide_6sl:auto_generated|  ; 17 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div2|lpm_divide_6sl:auto_generated                                                   ; work         ;
+;          |sign_div_unsign_8kh:divider| ; 17 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div2|lpm_divide_6sl:auto_generated|sign_div_unsign_8kh:divider                       ; work         ;
+;             |alt_u_div_qee:divider|    ; 17 (17)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Div2|lpm_divide_6sl:auto_generated|sign_div_unsign_8kh:divider|alt_u_div_qee:divider ; work         ;
 ;    |lpm_divide:Mod0|                   ; 36 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod0                                                                                 ; work         ;
 ;       |lpm_divide_ckl:auto_generated|  ; 36 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod0|lpm_divide_ckl:auto_generated                                                   ; work         ;
 ;          |sign_div_unsign_bkh:divider| ; 36 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod0|lpm_divide_ckl:auto_generated|sign_div_unsign_bkh:divider                       ; work         ;
 ;             |alt_u_div_0fe:divider|    ; 36 (36)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod0|lpm_divide_ckl:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_0fe:divider ; work         ;
-;    |lpm_divide:Mod1|                   ; 20 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1                                                                                 ; work         ;
-;       |lpm_divide_akl:auto_generated|  ; 20 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1|lpm_divide_akl:auto_generated                                                   ; work         ;
-;          |sign_div_unsign_akh:divider| ; 20 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1|lpm_divide_akl:auto_generated|sign_div_unsign_akh:divider                       ; work         ;
-;             |alt_u_div_tee:divider|    ; 20 (20)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1|lpm_divide_akl:auto_generated|sign_div_unsign_akh:divider|alt_u_div_tee:divider ; work         ;
+;    |lpm_divide:Mod1|                   ; 36 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1                                                                                 ; work         ;
+;       |lpm_divide_ckl:auto_generated|  ; 36 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1|lpm_divide_ckl:auto_generated                                                   ; work         ;
+;          |sign_div_unsign_bkh:divider| ; 36 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1|lpm_divide_ckl:auto_generated|sign_div_unsign_bkh:divider                       ; work         ;
+;             |alt_u_div_0fe:divider|    ; 36 (36)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod1|lpm_divide_ckl:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_0fe:divider ; work         ;
+;    |lpm_divide:Mod2|                   ; 20 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod2                                                                                 ; work         ;
+;       |lpm_divide_akl:auto_generated|  ; 20 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod2|lpm_divide_akl:auto_generated                                                   ; work         ;
+;          |sign_div_unsign_akh:divider| ; 20 (0)            ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod2|lpm_divide_akl:auto_generated|sign_div_unsign_akh:divider                       ; work         ;
+;             |alt_u_div_tee:divider|    ; 20 (20)           ; 0 (0)        ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |PRJ_2|lpm_divide:Mod2|lpm_divide_akl:auto_generated|sign_div_unsign_akh:divider|alt_u_div_tee:divider ; work         ;
 +----------------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -303,24 +312,6 @@ Encoding Type:  One-Hot
 +-------------------------+---------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+----------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--------------------+-------------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                               ;
-+----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
-+----------------------------------------------------+---------------------+------------------------+
-; DB[0]                                              ; DB                  ; yes                    ;
-; DB[1]                                              ; DB                  ; yes                    ;
-; DB[2]                                              ; DB                  ; yes                    ;
-; DB[3]                                              ; DB                  ; yes                    ;
-; DB[4]                                              ; DB                  ; yes                    ;
-; DB[5]                                              ; DB                  ; yes                    ;
-; DB[6]                                              ; DB                  ; yes                    ;
-; DB[7]                                              ; DB                  ; yes                    ;
-; Number of user-specified and inferred latches = 8  ;                     ;                        ;
-+----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
@@ -341,12 +332,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |PRJ_2|contSeg[4]          ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |PRJ_2|contMin[5]          ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |PRJ_2|contHor[3]          ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |PRJ_2|contSeg[2]          ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |PRJ_2|contMin[3]          ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |PRJ_2|contHor[4]          ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |PRJ_2|contMin             ;
 ; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |PRJ_2|contSeg             ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |PRJ_2|contMin             ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; No         ; |PRJ_2|contHor             ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |PRJ_2|contHor             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -416,6 +407,52 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 6              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_ckl ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_7sl ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
 ; LPM_WIDTHN             ; 5              ; Untyped                ;
 ; LPM_WIDTHD             ; 5              ; Untyped                ;
 ; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
@@ -435,7 +472,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div2 ;
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
@@ -466,19 +503,19 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; cycloneiii_ff         ; 117                         ;
 ;     SCLR              ; 1                           ;
 ;     plain             ; 116                         ;
-; cycloneiii_lcell_comb ; 372                         ;
-;     arith             ; 99                          ;
-;         2 data inputs ; 74                          ;
-;         3 data inputs ; 25                          ;
-;     normal            ; 273                         ;
-;         0 data inputs ; 11                          ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 106                         ;
-;         3 data inputs ; 36                          ;
-;         4 data inputs ; 115                         ;
+; cycloneiii_lcell_comb ; 448                         ;
+;     arith             ; 127                         ;
+;         2 data inputs ; 80                          ;
+;         3 data inputs ; 47                          ;
+;     normal            ; 321                         ;
+;         0 data inputs ; 17                          ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 137                         ;
+;         3 data inputs ; 29                          ;
+;         4 data inputs ; 130                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 10.50                       ;
-; Average LUT depth     ; 7.65                        ;
+; Max LUT depth         ; 11.50                       ;
+; Average LUT depth     ; 8.25                        ;
 +-----------------------+-----------------------------+
 
 
@@ -487,7 +524,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:07     ;
+; Top            ; 00:00:06     ;
 +----------------+--------------+
 
 
@@ -497,36 +534,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Fri Dec 07 13:56:18 2018
+    Info: Processing started: Fri Dec 07 15:23:58 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PRJ_2 -c PRJ_2
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file prj_2.vhd
     Info (12022): Found design unit 1: PRJ_2-PRJ_2
     Info (12023): Found entity 1: PRJ_2
 Info (12127): Elaborating entity "PRJ_2" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(328): signal "DH" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(331): signal "UH" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(337): signal "UM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(340): signal "DM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(346): signal "DS" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(349): signal "US" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at PRJ_2.vhd(298): inferring latch(es) for signal or variable "DB", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at PRJ_2.vhd(298): inferring latch(es) for signal or variable "DM", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at PRJ_2.vhd(298): inferring latch(es) for signal or variable "UM", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(332): signal "DH" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(335): signal "UH" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(341): signal "DM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(344): signal "UM" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(350): signal "DS" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at PRJ_2.vhd(353): signal "US" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10873): Using initial value X (don't care) for net "ARDUINO_IO[15..10]" at PRJ_2.vhd(25)
-Info (10041): Inferred latch for "DB[0]" at PRJ_2.vhd(298)
-Info (10041): Inferred latch for "DB[1]" at PRJ_2.vhd(298)
-Info (10041): Inferred latch for "DB[2]" at PRJ_2.vhd(298)
-Info (10041): Inferred latch for "DB[3]" at PRJ_2.vhd(298)
-Info (10041): Inferred latch for "DB[4]" at PRJ_2.vhd(298)
-Info (10041): Inferred latch for "DB[5]" at PRJ_2.vhd(298)
-Info (10041): Inferred latch for "DB[6]" at PRJ_2.vhd(298)
-Info (10041): Inferred latch for "DB[7]" at PRJ_2.vhd(298)
-Info (278001): Inferred 4 megafunctions from design logic
+Info (278001): Inferred 6 megafunctions from design logic
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0"
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1"
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2"
 Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0"
 Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHN" = "6"
@@ -555,8 +583,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_9kh
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_see.tdf
     Info (12023): Found entity 1: alt_u_div_see
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1"
-Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter:
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod2"
+Info (12133): Instantiated megafunction "lpm_divide:Mod2" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHN" = "5"
     Info (12134): Parameter "LPM_WIDTHD" = "5"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -567,8 +595,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_akh
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_tee.tdf
     Info (12023): Found entity 1: alt_u_div_tee
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1"
-Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter:
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2"
+Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHN" = "5"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -599,14 +627,14 @@ Warning (21074): Design contains 9 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 428 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 501 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 16 output pins
-    Info (21061): Implemented 399 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 27 warnings
-    Info: Peak virtual memory: 4885 megabytes
-    Info: Processing ended: Fri Dec 07 13:57:21 2018
-    Info: Elapsed time: 00:01:03
-    Info: Total CPU time (on all processors): 00:01:57
+    Info (21061): Implemented 472 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnings
+    Info: Peak virtual memory: 4890 megabytes
+    Info: Processing ended: Fri Dec 07 15:24:51 2018
+    Info: Elapsed time: 00:00:53
+    Info: Total CPU time (on all processors): 00:01:54
 
 

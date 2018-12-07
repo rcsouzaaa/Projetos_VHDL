@@ -144,49 +144,53 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 		
 		
 		IF(contB = maxB -1) THEN
-					contB := 0;
-					
-					IF(KEY(0)='0') THEN 		-- se chave dos segundos, zera segundos
-						contSeg := 0;
-					END IF;
-					
-					IF(KEY(1) ='0') THEN 		-- se chave dos minutos e horas, incrementa minutos e horas
-						contMin := contMin+1;
-					
-						IF (contMin = maxMin) THEN 
-							contMin := 0;
-							contHor := contHor+1;
-							IF (contHor = maxHor) THEN 
-							contHor := 0;
-							END IF;
+			contB := 0;
+			
+			IF(KEY(0)='0') THEN 		-- zera todo o relogio
+				contSeg := 0;
+				contMin := 0;
+				contHor := 0;
+			END IF;
+			
+			IF(KEY(1) ='0') THEN 		-- incrementa minutos
+				contMin := contMin +1;
+			END IF;
+			
+			
+			IF (contMin = maxMin) THEN 
+					contMin := 0;
+					contHor := contHor+1;
+				IF (contHor = maxHor) THEN 
+						contHor := 0;
 						END IF;
-					END IF;
-				END IF;
+		   	END IF;
+		END IF;
+				
 		
 		-----------------------------------------------------------
 		-- Funcionamento do Relógio em relação ao sinal de CLOCK --
 		-----------------------------------------------------------
 		
-				IF(contCLK = maxCont-1) THEN	-- se contou 1 segundo
-					contCLK := 0;
-					contSeg := contSeg + 1;
-				-----------------------------------------------------------
-					IF(contSeg = maxSeg) THEN 	-- se contSeg = 60
-						contSeg := 0;
-						contMin := contMin + 1;
-				-----------------------------------------------------------
-						IF(contMin = maxMin) THEN	-- se contMin = 60
-							contMin := 0;
-							contHor := contHor + 1;
-				-----------------------------------------------------------
-							IF (contHor = maxHor) THEN -- se contHor = 24
-								contHor := 0;
-							
-							END IF;
-						END IF;											
+		IF(contCLK = maxCont-1) THEN	-- se contou 1 segundo
+			contCLK := 0;
+			contSeg := contSeg + 1;
+		-----------------------------------------------------------
+			IF(contSeg = maxSeg) THEN 	-- se contSeg = 60
+				contSeg := 0;
+				contMin := contMin + 1;
+		-----------------------------------------------------------
+				IF(contMin = maxMin) THEN	-- se contMin = 60
+					contMin := 0;
+					contHor := contHor + 1;
+		-----------------------------------------------------------
+					IF (contHor = maxHor) THEN -- se contHor = 24
+						contHor := 0;
 					END IF;
 				END IF;
-			END IF;
+			END IF;											
+		END IF;
+		
+	END IF;
 					
 	-----------------------------------------------------------
 	-- Conversao para os digitos individuais do tempo
@@ -287,7 +291,7 @@ tabelaHL:
 tabelaHH: 		-- so conta até 2
 	BLOCK
 	BEGIN	
-		DH <= dsn	WHEN digHH=0 ELSE
+		DH <= ds0	WHEN digHH=0 ELSE
 				  ds1	WHEN digHH=1 ELSE
 				  ds2;
 	END BLOCK tabelaHH;	
@@ -334,10 +338,10 @@ tabelaHH: 		-- so conta até 2
 				 DB <= "00111010"; 													-- Dois Pontos
 				 nx_state <= WriteData4;
 			WHEN WriteData4 =>RS<='1'; 
-				 DM <= UM; 																-- Dezena Minutos
+				 DB <= DM; 																-- Dezena Minutos
 				 nx_state <= WriteData5;
 			WHEN WriteData5 => RS <='1'; 
-				 UM <= DM; 																-- Unidade minutos
+				 DB <= UM; 																-- Unidade minutos
 				 nx_state <= WriteData6;
 			WHEN WriteData6=>RS<='1'; 
 				 DB <= "00111010";  													-- Dois Pontos
