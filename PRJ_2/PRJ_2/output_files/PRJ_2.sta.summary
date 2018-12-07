@@ -3,27 +3,27 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'pr_state.WriteData4'
-Slack : -7.264
-TNS   : -36.090
+Slack : -7.134
+TNS   : -37.646
 
 Type  : Slow 1200mV 85C Model Setup 'MAX10_CLK1_50'
-Slack : -6.992
-TNS   : -325.331
+Slack : -6.512
+TNS   : -319.912
 
 Type  : Slow 1200mV 85C Model Setup 'E'
-Slack : -1.012
-TNS   : -7.876
-
-Type  : Slow 1200mV 85C Model Hold 'pr_state.WriteData4'
-Slack : 0.158
-TNS   : 0.000
+Slack : -0.976
+TNS   : -5.896
 
 Type  : Slow 1200mV 85C Model Hold 'E'
-Slack : 0.225
+Slack : 0.309
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'pr_state.WriteData4'
+Slack : 0.313
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'MAX10_CLK1_50'
-Slack : 0.374
+Slack : 0.375
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MAX10_CLK1_50'
@@ -32,34 +32,34 @@ TNS   : -86.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'E'
 Slack : -1.000
-TNS   : -27.000
+TNS   : -34.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pr_state.WriteData4'
-Slack : 0.450
+Slack : 0.459
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'pr_state.WriteData4'
-Slack : -6.493
-TNS   : -31.958
+Slack : -6.351
+TNS   : -33.352
 
 Type  : Slow 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : -6.285
-TNS   : -288.806
+Slack : -5.865
+TNS   : -285.149
 
 Type  : Slow 1200mV 0C Model Setup 'E'
-Slack : -0.885
-TNS   : -5.304
-
-Type  : Slow 1200mV 0C Model Hold 'pr_state.WriteData4'
-Slack : 0.137
-TNS   : 0.000
+Slack : -0.878
+TNS   : -3.360
 
 Type  : Slow 1200mV 0C Model Hold 'E'
-Slack : 0.218
+Slack : 0.295
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'pr_state.WriteData4'
+Slack : 0.308
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'MAX10_CLK1_50'
-Slack : 0.337
+Slack : 0.339
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
@@ -68,46 +68,46 @@ TNS   : -86.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'E'
 Slack : -1.000
-TNS   : -27.000
+TNS   : -34.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pr_state.WriteData4'
-Slack : 0.401
+Slack : 0.412
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'pr_state.WriteData4'
-Slack : -2.284
-TNS   : -9.933
+Slack : -2.252
+TNS   : -10.496
 
 Type  : Fast 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : -2.281
-TNS   : -86.382
+Slack : -2.137
+TNS   : -85.856
 
 Type  : Fast 1200mV 0C Model Setup 'E'
-Slack : 0.060
+Slack : 0.064
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'pr_state.WriteData4'
-Slack : 0.046
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Hold 'E'
 Slack : 0.047
 TNS   : 0.000
 
+Type  : Fast 1200mV 0C Model Hold 'E'
+Slack : 0.083
+TNS   : 0.000
+
 Type  : Fast 1200mV 0C Model Hold 'MAX10_CLK1_50'
-Slack : 0.141
+Slack : 0.142
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
 Slack : -3.000
-TNS   : -101.168
+TNS   : -101.242
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'E'
 Slack : -1.000
-TNS   : -27.000
+TNS   : -34.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pr_state.WriteData4'
-Slack : 0.280
+Slack : 0.292
 TNS   : 0.000
 
 ------------------------------------------------------------

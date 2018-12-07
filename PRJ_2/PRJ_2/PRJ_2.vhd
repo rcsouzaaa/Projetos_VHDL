@@ -30,11 +30,40 @@ PORT 	  (
 END PRJ_2;
 --------------------------------------------------------------------
 ARCHITECTURE PRJ_2 OF PRJ_2 IS
-	TYPE state IS (FunctionSet1, FunctionSet2, FunctionSet3,															-- declaracao de funcoes
-	FunctionSet4, ClearDisplay, DisplayControl, EntryMode, 
-	SetAddress,WriteData1, WriteData2, WriteData3, WriteData4,WriteData5, WriteData6,						-- white data eh cada estado da maquina
-	WriteData7, WriteData8, WriteData9, WriteData10, WriteData11, WriteData12, WriteData13,
-	WriteData14, WriteData15, WriteData16, WriteData17, WriteData18, ReturnHome);		
+	TYPE state IS (	FunctionSet1, 
+							FunctionSet2, 
+							FunctionSet3,
+							FunctionSet4,										
+							ClearDisplay, 
+							DisplayControl, 
+							EntryMode, 
+							SetAddress, 
+							WriteData1,
+							WriteData2, 
+							WriteData3, 
+							WriteData4,
+							WriteData5, 
+							WriteData6,
+							WriteData7, 
+							WriteData8, 
+							WriteData9, 
+							WriteData10,									-- white data eh cada estado da maquina
+							WriteData11, 
+							WriteData12, 
+							WriteData13, 
+							WriteData14, 
+							WriteData15, 
+							WriteData16, 
+							WriteData17, 
+							WriteData18, 
+							WriteData19, 
+							WriteData20, 
+							WriteData21, 
+							WriteData22, 
+							WriteData23, 
+							WriteData24, 
+							WriteData25, 
+							ReturnHome);		
 	
 	SIGNAL pr_state, nx_state: state;
 	SIGNAL clk: STD_LOGIC;
@@ -89,10 +118,10 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 		BEGIN
 		IF (clk'EVENT AND clk='1') THEN
 		count := count + 1;
-		IF (count=clk_divider) THEN		
-		E <= NOT E;																													-- pulso do enable
-		count := 0;
-		END IF;
+			IF (count=clk_divider) THEN		
+			E <= NOT E;																													-- pulso do enable
+			count := 0;
+			END IF;
 		END IF;
 	END PROCESS;
 	
@@ -113,54 +142,52 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 		contCLK := contCLK + 1;																							-- divisor para o clock de 1 s
 		contB := contB + 1;																								-- divisor para 100 ms (leitura do botao)
 		
-		--------------------------------------------------------------
-		--leitura dos botoes KEY(0) - segundos, KEY(1) - minutos e horas
-		--------------------------------------------------------------
 		
 		IF(contB = maxB -1) THEN
-			contB := 0;
-			
-			IF(KEY(0)='0') THEN 																							-- se chave dos segundos, zera segundos
-				contSeg := 0;
-			END IF;
-			
-			IF(KEY(1) ='0') THEN 																						-- se chave dos minutos e horas, incrementa minutos e horas
-				contMin := contMin+1;
-				IF (contMin = maxMin) THEN 
-					contMin := 0;
-					contHor := contHor+1;
-					IF (contHor = maxHor) THEN 
-					contHor := 0;
+					contB := 0;
+					
+					IF(KEY(0)='0') THEN 		-- se chave dos segundos, zera segundos
+						contSeg := 0;
+					END IF;
+					
+					IF(KEY(1) ='0') THEN 		-- se chave dos minutos e horas, incrementa minutos e horas
+						contMin := contMin+1;
+					
+						IF (contMin = maxMin) THEN 
+							contMin := 0;
+							contHor := contHor+1;
+							IF (contHor = maxHor) THEN 
+							contHor := 0;
+							END IF;
+						END IF;
 					END IF;
 				END IF;
-			END IF;
-		END IF;
 		
 		-----------------------------------------------------------
 		-- Funcionamento do Relógio em relação ao sinal de CLOCK --
 		-----------------------------------------------------------
 		
-		IF(contCLK = maxCont-1) THEN																					-- se contou 1 segundo
-			contCLK := 0;	
-			contSeg := contSeg + 1;
-		-----------------------------------------------------------
-			IF(contSeg = maxSeg) THEN 																					-- se contSeg = 60
-				contSeg := 0;
-				contMin := contMin + 1;
-		-----------------------------------------------------------
-				IF(contMin = maxMin) THEN																				-- se contMin = 60
-					contMin := 0;	
-					contHor := contHor + 1;
-		-----------------------------------------------------------
-					IF (contHor = maxHor) THEN 																		-- se contHor = 24
-						contHor := 0;
-					
+				IF(contCLK = maxCont-1) THEN	-- se contou 1 segundo
+					contCLK := 0;
+					contSeg := contSeg + 1;
+				-----------------------------------------------------------
+					IF(contSeg = maxSeg) THEN 	-- se contSeg = 60
+						contSeg := 0;
+						contMin := contMin + 1;
+				-----------------------------------------------------------
+						IF(contMin = maxMin) THEN	-- se contMin = 60
+							contMin := 0;
+							contHor := contHor + 1;
+				-----------------------------------------------------------
+							IF (contHor = maxHor) THEN -- se contHor = 24
+								contHor := 0;
+							
+							END IF;
+						END IF;											
 					END IF;
-				END IF;											
+				END IF;
 			END IF;
-		END IF;
-	END IF;
-
+					
 	-----------------------------------------------------------
 	-- Conversao para os digitos individuais do tempo
 	-----------------------------------------------------------
@@ -180,11 +207,11 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 	PROCESS (E)
 		BEGIN
 		IF (E'EVENT AND E='1') THEN
-		IF (rst='1') THEN
-		pr_state <= FunctionSet1;																								-- mudanca de estado
+			IF (rst='1') THEN
+			pr_state <= FunctionSet1;																					-- mudanca de estado
 		ELSE
 		pr_state <= nx_state;				
-		END IF;
+			END IF;	
 		END IF;
 	END PROCESS;
 	
@@ -320,59 +347,59 @@ tabelaHH: 		-- so conta até 2
 				 nx_state <= WriteData8;
 			WHEN WriteData8=>RS<='1'; 
 				 DB <= US;  															-- Unidade Segundo
-				 nx_state <= SetAddress;
-			WHEN WriteData16=>RS<='1'; 
-				 DB <= dsn;  															-- " "
-				 nx_state <= WriteData17; 
-			WHEN WriteData16=>RS<='1'; 
-				 DB <= dsn;  															-- " "
-				 nx_state <= WriteData17; 
-			WHEN WriteData16=>RS<='1'; 
-				 DB <= dsn;  															-- " "
-				 nx_state <= WriteData17; 
-			WHEN WriteData16=>RS<='1'; 
-				 DB <= dsn;  															-- " "
-				 nx_state <= WriteData17; 
-			WHEN WriteData9=>RS<='1'; 
-				 DB <= ds2;  															-- 2
-				 nx_state <= WriteData10; 
-			WHEN WriteData9=>RS<='1'; 
-				 DB <= ds4;  															-- 4
-				 nx_state <= WriteData10; 
-			WHEN WriteData9=>RS<='1'; 
-				 DB <= "01001000";  													-- H
-				 nx_state <= WriteData10; 
-			WHEN SetAddress => RS <='0';											-- Desce para a linha de baixo
-				 DB <= "11000000";
 				 nx_state <= WriteData9;
 			WHEN WriteData9=>RS<='1'; 
-				 DB <= R;  															-- R
+				 DB <= dsn;  															-- " "
 				 nx_state <= WriteData10; 
 			WHEN WriteData10=>RS<='1'; 
-				 DB <= A;  															-- A
+				 DB <= dsn;  															-- " "
 				 nx_state <= WriteData11; 
 			WHEN WriteData11=>RS<='1'; 
-				 DB <= F;  															-- F
+				 DB <= dsn;  															-- " "
 				 nx_state <= WriteData12; 
 			WHEN WriteData12=>RS<='1'; 
-				 DB <= A;  															-- A
+				 DB <= dsn;  															-- " "
 				 nx_state <= WriteData13; 
 			WHEN WriteData13=>RS<='1'; 
-				 DB <= EEE;  														-- E
+				 DB <= ds2;  															-- 2
 				 nx_state <= WriteData14; 
 			WHEN WriteData14=>RS<='1'; 
-				 DB <= L;  															-- L
+				 DB <= ds4;  															-- 4
 				 nx_state <= WriteData15; 
-		   WHEN WriteData15=>RS<='1'; 
-				 DB <= A;  															-- A
-				 nx_state <= WriteData16; 
+			WHEN WriteData15=>RS<='1'; 
+				 DB <= "01001000";  													-- H
+				 nx_state <= SetAddress; 
+			WHEN SetAddress => RS <='0';											-- Desce para a linha de baixo
+				 DB <= "11000000";
+				 nx_state <= WriteData16;
 			WHEN WriteData16=>RS<='1'; 
-				 DB <= dsn;  														-- " "
+				 DB <= R;  															-- R
 				 nx_state <= WriteData17; 
 			WHEN WriteData17=>RS<='1'; 
-				 DB <= EYES;  														-- ;
+				 DB <= A;  															-- A
 				 nx_state <= WriteData18; 
 			WHEN WriteData18=>RS<='1'; 
+				 DB <= F;  															-- F
+				 nx_state <= WriteData19; 
+			WHEN WriteData19=>RS<='1'; 
+				 DB <= A;  															-- A
+				 nx_state <= WriteData20; 
+			WHEN WriteData20=>RS<='1'; 
+				 DB <= EEE;  														-- E
+				 nx_state <= WriteData21; 
+			WHEN WriteData21=>RS<='1'; 
+				 DB <= L;  															-- L
+				 nx_state <= WriteData22; 
+		   WHEN WriteData22=>RS<='1'; 
+				 DB <= A;  															-- A
+				 nx_state <= WriteData23; 
+			WHEN WriteData23=>RS<='1'; 
+				 DB <= dsn;  														-- " "
+				 nx_state <= WriteData24; 
+			WHEN WriteData24=>RS<='1'; 
+				 DB <= EYES;  														-- ;
+				 nx_state <= WriteData25; 
+			WHEN WriteData25=>RS<='1'; 
 				 DB <= D;  															-- D
 				 nx_state <= ReturnHome; 
 			WHEN ReturnHome =>RS<='0';
