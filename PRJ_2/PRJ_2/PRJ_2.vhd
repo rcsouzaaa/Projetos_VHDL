@@ -7,24 +7,24 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
-use ieee.std_logic_unsigned.all;																								-- para ignorar valores negativos
+use ieee.std_logic_unsigned.all;																							-- para ignorar valores negativos
 
 	
 --------------------------------------------------------------------
 ENTITY PRJ_2 IS
 
-GENERIC (clk_divider: INTEGER := 50000;																					-- 50MHz to 500Hz
-			maxCont: INTEGER := 50000000; 																					-- clock de 50 MHz
-			maxB:	   INTEGER := 5000000;																					   -- para incremento do botão (100 ms)
+GENERIC (clk_divider: INTEGER := 50000;																			-- 50MHz to 500Hz
+			maxCont: INTEGER := 50000000; 																			  -- clock de 50 MHz
+			maxB:	   INTEGER := 5000000;																					-- para incremento do botão (100 ms)
 			maxSeg:  INTEGER := 60;																								-- max contagem dos segundos
 			maxMin:  INTEGER := 60;																								-- max contagem dos minutos
 			maxHor:  INTEGER := 24																								-- max contagem das horas
 			);
 PORT 	  (
 			MAX10_CLK1_50:	 IN STD_LOGIC; 																					-- max10clock
-			ARDUINO_IO:		 OUT STD_LOGIC_VECTOR(15 DOWNTO 0); 														-- arduino io(vetor)
+			ARDUINO_IO:		 OUT STD_LOGIC_VECTOR(15 DOWNTO 0); 											-- arduino io(vetor)
 			SW:				 IN STD_LOGIC_VECTOR(9 DOWNTO 0);															-- CHAVES
-			KEY: 				 IN  STD_LOGIC_VECTOR(1 DOWNTO 0)  															-- 2 botões push-button
+			KEY: 				 IN  STD_LOGIC_VECTOR(1 DOWNTO 0)  													-- 2 botões push-button
 			);	
 			
 END PRJ_2;
@@ -73,21 +73,21 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 	SIGNAL DB: STD_LOGIC_VECTOR(7 DOWNTO 0);
 	SIGNAL digSL: INTEGER RANGE 0 TO 9; 																					-- LSB segundos 
 	SIGNAL digSH: INTEGER RANGE 0 TO 5;																						-- MSB segundos
-	SIGNAL digML: INTEGER RANGE 0 TO 9;																					   -- LSB minutos
+	SIGNAL digML: INTEGER RANGE 0 TO 9;																					  -- LSB minutos
 	SIGNAL digMH: INTEGER RANGE 0 TO 5; 																					-- MSB minutos
 	SIGNAL digHL: INTEGER RANGE 0 TO 9; 																					-- LSB horas
 	SIGNAL digHH: INTEGER RANGE 0 TO 2;																						-- MSB horas
 	
 	-- tabela de decodificação para os displays LCD 16X2
-	CONSTANT ds0: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110000";															-- nr 0
-	CONSTANT ds1: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110001";														   -- nr 1
+	CONSTANT ds0: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110000";														-- nr 0
+	CONSTANT ds1: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110001";														-- nr 1
 	CONSTANT ds2: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110010"; 														-- nr 2
 	CONSTANT ds3: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110011"; 														-- nr 3
 	CONSTANT ds4: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110100"; 														-- nr 4
 	CONSTANT ds5: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110101"; 														-- nr 5
 	CONSTANT ds6: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110110"; 														-- nr 6
-	CONSTANT ds7: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110111";															-- nr 7
-	CONSTANT ds8: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00111000";															-- nr 8
+	CONSTANT ds7: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00110111";														-- nr 7
+	CONSTANT ds8: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00111000";														-- nr 8
 	CONSTANT ds9: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00111001"; 														-- nr 9
 	CONSTANT dsn: STD_LOGIC_VECTOR(7 DOWNTO 0):= "00010000"; 														-- caracter vazio	
 	CONSTANT R:   STD_LOGIC_VECTOR(7 DOWNTO 0):= "01010010";
@@ -114,7 +114,7 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 	clk <= MAX10_CLK1_50;
 ----- Clock generator (E–>500Hz): -------------
 	PROCESS (clk)
-		VARIABLE count: INTEGER RANGE 0 TO clk_divider;																	-- divisao de frequencia
+		VARIABLE count: INTEGER RANGE 0 TO clk_divider;												-- divisao de frequencia
 		BEGIN
 		IF (clk'EVENT AND clk='1') THEN
 		count := count + 1;
@@ -129,9 +129,9 @@ ARCHITECTURE PRJ_2 OF PRJ_2 IS
 	PROCESS(MAX10_CLK1_50, KEY)
 	VARIABLE contCLK: INTEGER RANGE 0 TO maxCont;																	-- divisor para a base de tempo de 1s
 	VARIABLE contB:   INTEGER RANGE 0 TO maxB;																		-- contador para o incremento automatico do botao
-	VARIABLE contSeg: INTEGER RANGE 0 TO maxSeg;     															   -- contador dos segundos
-	VARIABLE contMin: INTEGER RANGE 0 TO maxMin;																		-- contador dos minutos
-	VARIABLE contHor: INTEGER RANGE 0 TO maxHor;																		-- contador das horas
+	VARIABLE contSeg: INTEGER RANGE 0 TO maxSeg;     															-- contador dos segundos
+	VARIABLE contMin: INTEGER RANGE 0 TO maxMin;																	-- contador dos minutos
+	VARIABLE contHor: INTEGER RANGE 0 TO maxHor;																	-- contador das horas
 	
 	BEGIN
 	-----------------------------------------------------------
@@ -371,9 +371,9 @@ tabelaHH: 		-- so conta até 2
 				 DB <= ds4;  															-- 4
 				 nx_state <= WriteData15; 
 			WHEN WriteData15=>RS<='1'; 
-				 DB <= "01001000";  													-- H
+				 DB <= "01001000";  											-- H
 				 nx_state <= SetAddress; 
-			WHEN SetAddress => RS <='0';											-- Desce para a linha de baixo
+			WHEN SetAddress => RS <='0';								-- Desce para a linha de baixo
 				 DB <= "11000000";
 				 nx_state <= WriteData16;
 			WHEN WriteData16=>RS<='1'; 
@@ -401,7 +401,7 @@ tabelaHH: 		-- so conta até 2
 				 DB <= dsn;  														-- " "
 				 nx_state <= WriteData24; 
 			WHEN WriteData24=>RS<='1'; 
-				 DB <= EYES;  														-- ;
+				 DB <= EYES;  													-- ;
 				 nx_state <= WriteData25; 
 			WHEN WriteData25=>RS<='1'; 
 				 DB <= D;  															-- D
